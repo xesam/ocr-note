@@ -35,11 +35,11 @@ def get_expiration(s):
     rs = re.match(r'\w+\((\d+)\D+(\d+)\D+\)', s)
     exp_year = datetime.date.today().year
     exp_month, exp_day = rs.group(1), rs.group(2)
-    return '{}{}{}'.format(exp_year, exp_month, exp_day)
+    return '{}{}{}'.format(exp_year, exp_month.rjust(2, '0'), exp_day.rjust(2, '0'))
 
 
 if __name__ == "__main__":
-    test_name = '1+1同城生活一乐易居菜乌驿站优惠群1.2020826'
+    test_name = '1+1同城生活一乐易居菜乌驿站优惠群1.20200826'
     logging.info(repair(test_name))
     test_s = '该二维码7天内(8月14日前)有效,重新进入将更新'
     logging.info(get_expiration(test_s))
