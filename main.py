@@ -11,17 +11,19 @@ logging.basicConfig(level=logging.INFO)
 
 
 def single(file_path, dst_dir):
+    logging.info('start {}'.format(file_path))
     name_bytes, time_bytes, crop_region = crop(file_path)
-    time.sleep(0.8)
+    time.sleep(1)
     chat_name = recognize(name_bytes)
-    time.sleep(0.8)
+    time.sleep(1)
     qr_time = recognize(time_bytes)
     exp_time = get_expiration(qr_time)
     ext_name = os.path.splitext(file_path)[1]
     dst_file_name = "{}.{}{}".format(chat_name, exp_time, ext_name)
     dst_file_path = os.path.join(os.path.abspath(dst_dir), dst_file_name)
-    logging.info(dst_file_path)
+    logging.info(dst_file_name)
     crop_region.save(dst_file_path)
+    logging.info('finish {}'.format(file_path))
 
 
 def run(src_dir, dst_dir):
