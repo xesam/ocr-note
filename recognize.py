@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 def repair(word):
-    word = word.replace('菜乌驿站', '菜鸟驿站')
+    word = word.replace('菜乌', '菜鸟')
     word = word.replace('1+1同城生活一', '1+1同城生活—')
     return word
 
